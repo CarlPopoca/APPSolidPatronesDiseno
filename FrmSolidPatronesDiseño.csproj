@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DEA6F2CD-8921-481F-AD45-FAC135554773}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>FrmSolidPatronesDiseño</RootNamespace>
+    <AssemblyName>FrmSolidPatronesDiseño</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="frmExpresionesLamda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmExpresionesLamda.Designer.cs">
+      <DependentUpon>frmExpresionesLamda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMenu.Designer.cs">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPatronesDiseno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPatronesDiseno.Designer.cs">
+      <DependentUpon>frmPatronesDiseno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSobreCarga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSobreCarga.Designer.cs">
+      <DependentUpon>frmSobreCarga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSolid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSolid.Designer.cs">
+      <DependentUpon>frmSolid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModificadoresAcceso\BaseAuto.cs" />
+    <Compile Include="ModificadoresAcceso\Sedan.cs" />
+    <Compile Include="PatronesDiseño\FactoryMethod\Hogar.cs" />
+    <Compile Include="PatronesDiseño\FactoryMethod\IProducto.cs" />
+    <Compile Include="PatronesDiseño\FactoryMethod\IProductoProveedor.cs" />
+    <Compile Include="PatronesDiseño\FactoryMethod\LineaBanca.cs" />
+    <Compile Include="PatronesDiseño\FactoryMethod\Producto.cs" />
+    <Compile Include="PatronesDiseño\FactoryMethod\ProductoProveedorHogar.cs" />
+    <Compile Include="PatronesDiseño\FactoryMethod\ProductoProveedorLineaBlanca.cs" />
+    <Compile Include="PatronesDiseño\Prototype\IUploadedFile.cs" />
+    <Compile Include="PatronesDiseño\Prototype\UploadedFile.cs" />
+    <Compile Include="PatronesDiseño\Singleton\Reloj.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecargaMetodos\cMensaje.cs" />
+    <Compile Include="Solid\DependencyInversion\ConSolid\EmailService.cs" />
+    <Compile Include="Solid\DependencyInversion\ConSolid\IEmailProvider.cs" />
+    <Compile Include="Solid\DependencyInversion\ConSolid\Mailchimp.cs" />
+    <Compile Include="Solid\DependencyInversion\ConSolid\Sendgrid.cs" />
+    <Compile Include="Solid\DependencyInversion\SinSolid\EmailService.cs" />
+    <Compile Include="Solid\DependencyInversion\SinSolid\Mailchimp.cs" />
+    <Compile Include="Solid\DependencyInversion\SinSolid\Sendgrid.cs" />
+    <Compile Include="Solid\InterfaceSegregation\ConSolid\GranMago.cs" />
+    <Compile Include="Solid\InterfaceSegregation\ConSolid\IAtaqueAgua.cs" />
+    <Compile Include="Solid\InterfaceSegregation\ConSolid\IAtaqueFuego.cs" />
+    <Compile Include="Solid\InterfaceSegregation\ConSolid\IAtaqueViento.cs" />
+    <Compile Include="Solid\InterfaceSegregation\ConSolid\MagoAgua.cs" />
+    <Compile Include="Solid\InterfaceSegregation\ConSolid\MagoFuego.cs" />
+    <Compile Include="Solid\InterfaceSegregation\ConSolid\MagoViento.cs" />
+    <Compile Include="Solid\InterfaceSegregation\SinSolid\GranMago.cs" />
+    <Compile Include="Solid\InterfaceSegregation\SinSolid\IPoderesEspeciales.cs" />
+    <Compile Include="Solid\InterfaceSegregation\SinSolid\MagoAgua.cs" />
+    <Compile Include="Solid\InterfaceSegregation\SinSolid\MagoFuego.cs" />
+    <Compile Include="Solid\InterfaceSegregation\SinSolid\MagoViento.cs" />
+    <Compile Include="Solid\LiskovSubstitution\Robot.cs" />
+    <Compile Include="Solid\LiskovSubstitution\RobotMega.cs" />
+    <Compile Include="Solid\LiskovSubstitution\RobotNormal.cs" />
+    <Compile Include="Solid\LiskovSubstitution\RobotSuper.cs" />
+    <Compile Include="Solid\OpenClosed\ConSolid\Admin.cs" />
+    <Compile Include="Solid\OpenClosed\ConSolid\BaseUser.cs" />
+    <Compile Include="Solid\OpenClosed\ConSolid\User.cs" />
+    <Compile Include="Solid\OpenClosed\ConSolid\UserFeatures.cs" />
+    <Compile Include="Solid\OpenClosed\SinSolid\Admin.cs" />
+    <Compile Include="Solid\OpenClosed\SinSolid\User.cs" />
+    <Compile Include="Solid\OpenClosed\SinSolid\UserFeatures.cs" />
+    <Compile Include="Solid\SimpleResponsabilidad\ConSolid\BankService.cs" />
+    <Compile Include="Solid\SimpleResponsabilidad\ConSolid\UserService.cs" />
+    <Compile Include="Solid\SimpleResponsabilidad\SinSolid\UserServiceSinSolid.cs" />
+    <EmbeddedResource Include="frmExpresionesLamda.resx">
+      <DependentUpon>frmExpresionesLamda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMenu.resx">
+      <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPatronesDiseno.resx">
+      <DependentUpon>frmPatronesDiseno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSobreCarga.resx">
+      <DependentUpon>frmSobreCarga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSolid.resx">
+      <DependentUpon>frmSolid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 y x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

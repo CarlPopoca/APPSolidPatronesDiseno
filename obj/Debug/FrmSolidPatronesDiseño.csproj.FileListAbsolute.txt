@@ -1,0 +1,14 @@
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\bin\Debug\FrmSolidPatronesDiseño.exe.config
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\bin\Debug\FrmSolidPatronesDiseño.exe
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\bin\Debug\FrmSolidPatronesDiseño.pdb
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\obj\Debug\FrmSolidPatronesDiseño.csprojAssemblyReference.cache
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\obj\Debug\FrmSolidPatronesDiseño.Properties.Resources.resources
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\obj\Debug\FrmSolidPatronesDiseño.csproj.GenerateResource.cache
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\obj\Debug\FrmSolidPatronesDiseño.csproj.CoreCompileInputs.cache
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\obj\Debug\FrmSolidPatronesDiseño.exe
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\obj\Debug\FrmSolidPatronesDiseño.pdb
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\obj\Debug\FrmSolidPatronesDiseño.frmMenu.resources
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\obj\Debug\FrmSolidPatronesDiseño.frmSobreCarga.resources
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\obj\Debug\FrmSolidPatronesDiseño.frmSolid.resources
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\obj\Debug\FrmSolidPatronesDiseño.frmPatronesDiseno.resources
+C:\Users\Praxis\source\repos\FrmSolidPatronesDiseño\obj\Debug\FrmSolidPatronesDiseño.frmExpresionesLamda.resources
