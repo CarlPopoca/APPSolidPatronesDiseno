@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using FrmSolidPatronesDiseño.PatronesDiseño.Singleton;
 using FrmSolidPatronesDiseño.PatronesDiseño.FactoryMethod;
 using FrmSolidPatronesDiseño.PatronesDiseño.Prototype;
+using FrmSolidPatronesDiseño.PatronesDiseño.AbstractFactory;
 
 namespace FrmSolidPatronesDiseño
 {
@@ -20,43 +21,38 @@ namespace FrmSolidPatronesDiseño
 			InitializeComponent();
 		}
 
-		private void RdbSingleton_Click(object sender, EventArgs e)
-		{
-			string mensaje = "Singleton (Instancia única): Es un patrón de diseño que permite restringir la creación de objetos pertenecientes a una clase o el valor de un tipo a un único objeto." + Environment.NewLine;
-            mensaje = mensaje + "Uso " + Environment.NewLine;
-            mensaje = mensaje + "Cuando cierto tipo de datos debe estar disponible para todos los demás objetos de la aplicación." + Environment.NewLine;
-            mensaje = mensaje + "Para controlar el acceso a un solo objeto. " + Environment.NewLine;
-			lblDefinicion.Text = mensaje;
-			lblResultado.Text = String.Empty;
-			ConfiguracionControles(true, false, false); ;
-		}
 		private void BtnMostrarResultado_Click(object sender, EventArgs e)
 		{
 			IProductoProveedor producto;
 			Reloj reloj;
 			List<Producto> prod = new List<Producto>();
+
 			if (rdbSingleton.Checked)
 			{
 				reloj = Reloj.ObtenerTiempoIngreso();
 				lblResultado.Text = reloj.tiempoIngreso.ToString();
 			}
+
 			if (rdbFactoryMethod.Checked)
 			{
-				if (cmbTipoProveedorFactoryMethod.Text.Equals("Linea Blanca"))
-				{
-					producto = new ProductoProveedorLineaBlanca();
-					 prod = producto.GetProducto().ObtenerProductos();
-				}
-				if (cmbTipoProveedorFactoryMethod.Text.Equals("Hogar"))
-				{
-					producto = new ProductoProveedorHogar();
-					 prod = producto.GetProducto().ObtenerProductos();
-				}
-				if (prod != null)
-				{
-					lblResultado.Text=prod.First().Precio.ToString();
-				}
+                switch (cmbTipoProveedorFactoryMethod.SelectedIndex)
+                {
+                    case 0:
+                        producto = new ProductoProveedorLineaBlanca();
+                        prod = producto.GetProducto().ObtenerProductos();
+                        lblResultado.Text = prod.First().Precio.ToString();
+                        break;
+                    case 1:
+                        producto = new ProductoProveedorHogar();
+                        prod = producto.GetProducto().ObtenerProductos();
+                        lblResultado.Text = prod.First().Precio.ToString();
+                        break;
+                    default:
+                        lblResultado.Text = "No hay resultados para esa opción";
+                        break;
+                }
 			}
+
 			if (this.rdbPrototype.Checked)
 			{
 				UploadedFile objPrimario = new UploadedFile();
@@ -70,22 +66,61 @@ namespace FrmSolidPatronesDiseño
 				lblResultado.Text = objSecundario.FileName + "," + objSecundario.ContentType;
 			}
 
+            if (this.rdbAbstractFactory.Checked)
+            {
+                string Almacenamiento = "Almacenamiento ";
+                 switch (this.cmbProductoAbstractFactory.SelectedIndex)
+                {
+                    case 0:
+                        IFabricaCD objCDR = new ProveedorCD();
+                        this.lblResultado.Text = Almacenamiento + objCDR.CrearCDR().Almacenamiento().ToString();
+                        break;
+                    case 1:
+                        IFabricaCD objCDRW = new ProveedorCD();
+                        this.lblResultado.Text = Almacenamiento + objCDRW.CrearCDRW().Almacenamiento().ToString();
+                        break;
+                    case 2:
+                        IFabricaDVD objDVDCS = new ProveedorDVD();
+                        this.lblResultado.Text = Almacenamiento + objDVDCS.CrearDVDCapaSimple().Almacenamiento().ToString();
+                        break;
+                    case 3:
+                        IFabricaDVD objDVDCD = new ProveedorDVD();
+                        this.lblResultado.Text = Almacenamiento + objDVDCD.CrearDVDCapaDoble().Almacenamiento().ToString();
+                        break;
+                    default:
+                        this.lblResultado.Text = "No hay resultados para esa opción";
+                        break;
+                }     
+            }
 		}
-		private void ConfiguracionControles(bool singleton, bool factoryMethod, bool Prototype) {
-			lblTipoProveedorFactoryMethod.Visible = factoryMethod;
+		private void ConfiguracionControles(bool singleton, bool factoryMethod, bool Prototype, bool abstractFactory) {
+            cmbProductoAbstractFactory.SelectedIndex = -1;
+            cmbTipoProveedorFactoryMethod.SelectedIndex = -1;
+            lblResultado.Text = string.Empty;
+            lblTipoProveedorFactoryMethod.Visible = factoryMethod;
 			cmbTipoProveedorFactoryMethod.Visible = factoryMethod;
+            lblProductoAbstractFactory.Visible = abstractFactory;
+            cmbProductoAbstractFactory.Visible = abstractFactory;
 		}
-		private void RdbFactoryMethod_Click(object sender, EventArgs e)
+
+        private void RdbSingleton_Click(object sender, EventArgs e)
+        {
+            string mensaje = "Singleton (Instancia única): Es un patrón de diseño que permite restringir la creación de objetos pertenecientes a una clase o el valor de un tipo a un único objeto." + Environment.NewLine;
+            mensaje = mensaje + "Uso " + Environment.NewLine;
+            mensaje = mensaje + "Cuando cierto tipo de datos debe estar disponible para todos los demás objetos de la aplicación." + Environment.NewLine;
+            mensaje = mensaje + "Para controlar el acceso a un solo objeto. " + Environment.NewLine;
+            lblDefinicion.Text = mensaje;
+            ConfiguracionControles(true, false, false, false); ;
+        }
+        private void RdbFactoryMethod_Click(object sender, EventArgs e)
 		{
 			string mensaje;
 			mensaje = "Factory Method (Método de fabricación): permite la creación de objetos de un subtipo determinado a través de una clase Factory,  la cual oculta los detalles de creación del objeto, es una versión resumida del Abstract Factory. " + Environment.NewLine;
             mensaje = mensaje + "Uso" + Environment.NewLine;
             mensaje = mensaje + "Es especialmente útil cuando no sabemos en tiempo de diseño, el subtipo que vamos a utilizar. " + Environment.NewLine;
 			mensaje = mensaje + "Cuando queremos delegar la lógica de creación de los objetos a una clase Factory," + Environment.NewLine;
-			
 			lblDefinicion.Text = mensaje;
-			lblResultado.Text = String.Empty;
-			ConfiguracionControles(false, true,false);
+			ConfiguracionControles(false, true,false, false);
 		}
 
 		private void RdbPrototype_Click(object sender, EventArgs e)
@@ -96,7 +131,7 @@ namespace FrmSolidPatronesDiseño
 			mensaje = mensaje + "La creación de nuevos objetos acarrea un coste computacional elevado" + Environment.NewLine;
 			mensaje = mensaje + "Los objetos a crear tienen o suelen tener atributos que repiten su valor." + Environment.NewLine;
 			lblDefinicion.Text = mensaje;
-			ConfiguracionControles(false, false, true); ;
+            ConfiguracionControles(false, false, true, false); ;
 		}
 
 		private void RdbAbstractFactory_Click(object sender, EventArgs e)
@@ -110,6 +145,8 @@ namespace FrmSolidPatronesDiseño
 			mensaje = mensaje + "Las librerías deben ser publicadas sin exponer detalles de implementación";
 			mensaje = mensaje + "Clases concretas deben ser disociadas de los clientes, es decir se separa el código del cliente de la creación de objetos.";
 			lblDefinicion.Text = mensaje;
-		} 
-	}
+            ConfiguracionControles(false, false, false, true); ;
+        }
+
+    }
 }
