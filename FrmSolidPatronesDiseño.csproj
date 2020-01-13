@@ -241,6 +241,12 @@
     <Compile Include="PatronesDiseño\AbstractFactory\IProductoMultimedia.cs" />
     <Compile Include="PatronesDiseño\AbstractFactory\ProveedorCD.cs" />
     <Compile Include="PatronesDiseño\AbstractFactory\ProveedorDVD.cs" />
+    <Compile Include="PatronesDiseño\Builder\Auto.cs" />
+    <Compile Include="PatronesDiseño\Builder\AutosKia.cs" />
+    <Compile Include="PatronesDiseño\Builder\AutosMitsubishi.cs" />
+    <Compile Include="PatronesDiseño\Builder\AutosNissan.cs" />
+    <Compile Include="PatronesDiseño\Builder\Concesionario.cs" />
+    <Compile Include="PatronesDiseño\Builder\ConstructorAuto.cs" />
     <Compile Include="PatronesDiseño\FactoryMethod\Hogar.cs" />
     <Compile Include="PatronesDiseño\FactoryMethod\IProducto.cs" />
     <Compile Include="PatronesDiseño\FactoryMethod\IProductoProveedor.cs" />

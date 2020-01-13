@@ -11,6 +11,7 @@ using FrmSolidPatronesDiseño.PatronesDiseño.Singleton;
 using FrmSolidPatronesDiseño.PatronesDiseño.FactoryMethod;
 using FrmSolidPatronesDiseño.PatronesDiseño.Prototype;
 using FrmSolidPatronesDiseño.PatronesDiseño.AbstractFactory;
+using FrmSolidPatronesDiseño.PatronesDiseño.Builder;
 
 namespace FrmSolidPatronesDiseño
 {
@@ -92,15 +93,51 @@ namespace FrmSolidPatronesDiseño
                         break;
                 }     
             }
+
+            if (this.rdbBuilder.Checked)
+            {
+
+                switch (cmbAutoBuilder.SelectedIndex)
+                {
+                    case 0:
+                        ConstructorAuto objConsAutoKia = new AutosKia();
+                        Concesionario objConcesionarioKia = new Concesionario(objConsAutoKia);
+                        objConcesionarioKia.ConstruirAuto();
+                        Auto objAutoKia = objConcesionarioKia.ObtenerAuto();
+                        this.lblResultado.Text = objAutoKia.Tipo + ", cilindrada: " + objAutoKia.Cilindrada.ToString() + ", Potencia: " + objAutoKia.Potencia.ToString() + ", Asientos: " + objAutoKia.NumAsientos.ToString();
+                        break;
+                    case 1:
+                        ConstructorAuto objConsAutoNissan = new AutosNissan();
+                        Concesionario objConcesionarioNissan = new Concesionario(objConsAutoNissan);
+                        objConcesionarioNissan.ConstruirAuto();
+                        Auto objAutoNissan = objConcesionarioNissan.ObtenerAuto();
+                        this.lblResultado.Text = objAutoNissan.Tipo + ", cilindrada: " + objAutoNissan.Cilindrada.ToString() + ", Potencia: " + objAutoNissan.Potencia.ToString() + ", Asientos: " + objAutoNissan.NumAsientos.ToString();
+                        break;
+                    case 2:
+                        ConstructorAuto objConsAutoMitsubishi = new AutosKia();
+                        Concesionario objConcesionarioMitsubishi = new Concesionario(objConsAutoMitsubishi);
+                        objConcesionarioMitsubishi.ConstruirAuto();
+                        Auto objAutoMitsubishi = objConcesionarioMitsubishi.ObtenerAuto();
+                        this.lblResultado.Text = objAutoMitsubishi.Tipo + ", Cilindrada: " + objAutoMitsubishi.Cilindrada.ToString() + ", Potencia: " + objAutoMitsubishi.Potencia.ToString() + ", Asientos: " + objAutoMitsubishi.NumAsientos.ToString();
+                        break;
+                    default:
+                        this.lblResultado.Text = "No hay resultados para esa opción";
+                        break;
+
+                }
+            }
 		}
-		private void ConfiguracionControles(bool singleton, bool factoryMethod, bool Prototype, bool abstractFactory) {
+		private void ConfiguracionControles(bool singleton, bool factoryMethod, bool Prototype, bool abstractFactory, bool builder) {
             cmbProductoAbstractFactory.SelectedIndex = -1;
             cmbTipoProveedorFactoryMethod.SelectedIndex = -1;
+            cmbAutoBuilder.SelectedIndex = -1;
             lblResultado.Text = string.Empty;
             lblTipoProveedorFactoryMethod.Visible = factoryMethod;
 			cmbTipoProveedorFactoryMethod.Visible = factoryMethod;
             lblProductoAbstractFactory.Visible = abstractFactory;
             cmbProductoAbstractFactory.Visible = abstractFactory;
+            lblAutoBuilder.Visible = builder;
+            cmbAutoBuilder.Visible = builder;
 		}
 
         private void RdbSingleton_Click(object sender, EventArgs e)
@@ -110,7 +147,7 @@ namespace FrmSolidPatronesDiseño
             mensaje = mensaje + "Cuando cierto tipo de datos debe estar disponible para todos los demás objetos de la aplicación." + Environment.NewLine;
             mensaje = mensaje + "Para controlar el acceso a un solo objeto. " + Environment.NewLine;
             lblDefinicion.Text = mensaje;
-            ConfiguracionControles(true, false, false, false); ;
+            ConfiguracionControles(true, false, false, false, false);
         }
         private void RdbFactoryMethod_Click(object sender, EventArgs e)
 		{
@@ -120,7 +157,7 @@ namespace FrmSolidPatronesDiseño
             mensaje = mensaje + "Es especialmente útil cuando no sabemos en tiempo de diseño, el subtipo que vamos a utilizar. " + Environment.NewLine;
 			mensaje = mensaje + "Cuando queremos delegar la lógica de creación de los objetos a una clase Factory," + Environment.NewLine;
 			lblDefinicion.Text = mensaje;
-			ConfiguracionControles(false, true,false, false);
+			ConfiguracionControles(false, true,false, false, false);
 		}
 
 		private void RdbPrototype_Click(object sender, EventArgs e)
@@ -131,7 +168,7 @@ namespace FrmSolidPatronesDiseño
 			mensaje = mensaje + "La creación de nuevos objetos acarrea un coste computacional elevado" + Environment.NewLine;
 			mensaje = mensaje + "Los objetos a crear tienen o suelen tener atributos que repiten su valor." + Environment.NewLine;
 			lblDefinicion.Text = mensaje;
-            ConfiguracionControles(false, false, true, false); ;
+            ConfiguracionControles(false, false, true, false, false); ;
 		}
 
 		private void RdbAbstractFactory_Click(object sender, EventArgs e)
@@ -145,8 +182,19 @@ namespace FrmSolidPatronesDiseño
 			mensaje = mensaje + "Las librerías deben ser publicadas sin exponer detalles de implementación";
 			mensaje = mensaje + "Clases concretas deben ser disociadas de los clientes, es decir se separa el código del cliente de la creación de objetos.";
 			lblDefinicion.Text = mensaje;
-            ConfiguracionControles(false, false, false, true); ;
+            ConfiguracionControles(false, false, false, true, false); ;
         }
 
+        private void RdbBuilder_Click(object sender, EventArgs e)
+        {
+            string mensaje = "Builder: Un único proceso de construcción debe ser capaz de construir distintos objetos complejos, ";
+            mensaje = mensaje + "abstrayéndonos de los detalles particulares de cada uno de los tipos." + Environment.NewLine;
+            mensaje = mensaje + " Uso" + Environment.NewLine;
+            mensaje = mensaje + "Nuestro sistema trata con objetos complejos (compuestos por muchos atributos) pero el número de configuraciones es limitada.";
+            mensaje = mensaje + "El algoritmo de creación del objeto complejo puede independizarse de las partes que lo componen y del ensamblado de las mismas.";
+            lblDefinicion.Text = mensaje;
+            ConfiguracionControles(false, false, false, false, true); ;
+
+        }
     }
 }

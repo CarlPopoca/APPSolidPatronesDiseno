@@ -59,6 +59,8 @@
             this.lblTipoProveedorFactoryMethod = new System.Windows.Forms.Label();
             this.lblProductoAbstractFactory = new System.Windows.Forms.Label();
             this.cmbProductoAbstractFactory = new System.Windows.Forms.ComboBox();
+            this.lblAutoBuilder = new System.Windows.Forms.Label();
+            this.cmbAutoBuilder = new System.Windows.Forms.ComboBox();
             this.grbCreacionales.SuspendLayout();
             this.grbEstructurales.SuspendLayout();
             this.grbComportamiento.SuspendLayout();
@@ -88,6 +90,7 @@
             this.rdbBuilder.TabStop = true;
             this.rdbBuilder.Text = "Builder";
             this.rdbBuilder.UseVisualStyleBackColor = true;
+            this.rdbBuilder.Click += new System.EventHandler(this.RdbBuilder_Click);
             // 
             // rdbAbstractFactory
             // 
@@ -417,11 +420,35 @@
             this.cmbProductoAbstractFactory.Size = new System.Drawing.Size(121, 21);
             this.cmbProductoAbstractFactory.TabIndex = 23;
             // 
+            // lblAutoBuilder
+            // 
+            this.lblAutoBuilder.AutoSize = true;
+            this.lblAutoBuilder.Location = new System.Drawing.Point(305, 277);
+            this.lblAutoBuilder.Name = "lblAutoBuilder";
+            this.lblAutoBuilder.Size = new System.Drawing.Size(32, 13);
+            this.lblAutoBuilder.TabIndex = 24;
+            this.lblAutoBuilder.Text = "Auto:";
+            this.lblAutoBuilder.Visible = false;
+            // 
+            // cmbAutoBuilder
+            // 
+            this.cmbAutoBuilder.FormattingEnabled = true;
+            this.cmbAutoBuilder.Items.AddRange(new object[] {
+            "Kia",
+            "Nissan",
+            "Mitsubishi"});
+            this.cmbAutoBuilder.Location = new System.Drawing.Point(389, 273);
+            this.cmbAutoBuilder.Name = "cmbAutoBuilder";
+            this.cmbAutoBuilder.Size = new System.Drawing.Size(121, 21);
+            this.cmbAutoBuilder.TabIndex = 25;
+            // 
             // frmPatronesDiseno
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 559);
+            this.Controls.Add(this.cmbAutoBuilder);
+            this.Controls.Add(this.lblAutoBuilder);
             this.Controls.Add(this.cmbProductoAbstractFactory);
             this.Controls.Add(this.lblProductoAbstractFactory);
             this.Controls.Add(this.cmbTipoProveedorFactoryMethod);
@@ -479,5 +506,7 @@
 		private System.Windows.Forms.Label lblTipoProveedorFactoryMethod;
         private System.Windows.Forms.Label lblProductoAbstractFactory;
         private System.Windows.Forms.ComboBox cmbProductoAbstractFactory;
+        private System.Windows.Forms.Label lblAutoBuilder;
+        private System.Windows.Forms.ComboBox cmbAutoBuilder;
     }
 }
